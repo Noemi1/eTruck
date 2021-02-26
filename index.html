@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Truck</title>
+    <link rel="stylesheet" href="./assets/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <link rel="stylesheet" href="./assets/css/nprogress.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <div class="fundo-bg">
+        <header class="header">
+            <div class="header__top">
+                <p>eTruck Dashboard - Betoneiras</p>
+            </div>
+            <div class="header__nav">
+                <div class="wrapper">
+                    <div class="header__nav-inner">
+                        <a href="" class="header__nav-link">Frota</a>
+                        <a href="" class="header__nav-link">Relatórios</a>
+                        <a href="" class="header__nav-link">
+                            <span class="alertas-number" title="Nova notificação">Novo</span> Alertas
+                        </a>
+                        <a href="" class="header__nav-link">Manutenção</a>
+                        <a href="" class="header__nav-link">Admin</a>
+                        <a href="" class="header__nav-link">Sair</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="btnFloating-content menu-open">
+                <button class="btn btn-closeMenu">
+                    <p class="icon-menu" onclick="openMenu()" style="display: none;"><i class="fas fa-bars"></i></p>
+                    <p class="icon-close" onclick="closeMenu()"><i class="fas fa-times"></i></p>
+                </button>
+
+            </div>
+
+        </header>
+        <main class="main menu-open">
+            <section class="dashboard">
+                <h1>Dashboard</h1>
+                <div class="dashboard__inner">
+                    <div class="dashboard__item">
+                        <header class="dashboard__item-header">
+                            <h3>Distribuição de Frota e Status</h3>
+                            <div class="input-search">
+                                <input type="search" name="localizacao" id="localizacao" class="inputForm" placeholder="Pesquisar localização...">
+                                <label for="localizacao"><i class="fas fa-search"></i></label>
+                            </div>
+                        </header>
+                        <div class="mapa-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14669.868782161597!2d-46.9220621!3d-23.1896385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1593194276494!5m2!1spt-BR!2sbr" width="600" height="450" frameborder="0" style="border:0;"
+                                allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        <div class="dashboard__item-footer">
+                            <div class="mapa-legenda">
+                                <h3>Legenda</h3>
+                                <p>
+                                    <span class="text-yellow"><i class="fas fa-map-marker-alt"></i></span> Legenda
+                                </p>
+                                <p>
+                                    <span class="text-red"><i class="fas fa-map-marker-alt"></i></span> Legenda
+                                </p>
+                                <p>
+                                    <span class="text-purple"><i class="fas fa-map-marker-alt"></i></span> Legenda
+                                </p>
+                                <p>
+                                    <span class="text-green"><i class="fas fa-map-marker-alt"></i></span> Legenda
+                                </p>
+                            </div>
+                            <div class="mapa__overview">
+                                <h3>Overview</h3>
+                                <table class="table overview__table">
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Total M<sup>3</sup></th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>5112</td>
+                                            <td>Normal</td>
+                                        </tr>
+                                        <tr>
+                                            <td>23-06</td>
+                                            <td>6244</td>
+                                            <td>Acima</td>
+                                        </tr>
+                                        <tr>
+                                            <td>22/06</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>22/06</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>22/06</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>22/06</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div id="paginator-overview" class="paginator"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="dashboard__item">
+                        <div class="dashboard__item-inner">
+                            <aside class="dashboard__item-aside">
+                                <h3>Detalhes do Evento</h3>
+                                <div class="detalhes">
+                                    <div class="linha">
+                                        <div class="detalhes__motorista">
+                                            <!-- <img src="" alt="" class="detalhe-img"> -->
+                                            <p class="img-content">
+                                                <i class="fas fa-user-alt"></i>
+                                            </p>
+                                            <p>João Moutinho</p>
+                                            <p>Dist. total: 457km</p>
+                                        </div>
+                                        <div class="detalhes__caminhao">
+                                            <!-- <img src="" alt="" class="detalhe-img"> -->
+                                            <p class="img-content">
+                                                <i class="fas fa-truck"></i>
+                                            </p>
+                                            <p><strong>ZNO3915</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <p class="text-red">Óleo - Vencido</p>
+                                        <p class="text-red">Alerta de slump</p>
+                                        <p class="text-red">Entrega #1234 - 22/06</p>
+                                    </div>
+                                    <div class="">
+                                        <p>
+                                            <strong>Vendedor:</strong> José Pilantra
+                                        </p>
+                                        <p>
+                                            <strong>Cliente Impactado:</strong>
+                                        </p>
+                                        <p>Terrão Empreendimentos</p>
+                                        <p><strong>Tel:</strong> (11) 9.5555-5555</p>
+                                    </div>
+                                </div>
+
+                            </aside>
+                            <div class="eventos">
+                                <table class="table eventos__table">
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Local</th>
+                                            <th>Total M<sup>3</sup></th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>5112</td>
+                                            <td>Normal</td>
+                                        </tr>
+                                        <tr class="text-red">
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>6244</td>
+                                            <td>Alerta de Slump</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoje</td>
+                                            <td>ZN-Santana</td>
+                                            <td>1645</td>
+                                            <td>Abaixo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div id="paginator-eventos" class="paginator"></div>
+                            </div>
+                        </div>
+                        <div class="graficos">
+                            <div class="graficos__item">
+                                <h4>Histórico de Entregas</h4>
+                                <script type="text/javascript">
+                                    google.charts.load('current', { // Load the Visualization API and the corechart package.
+                                        'packages': ['corechart']
+                                    });
+                                    google.charts.setOnLoadCallback(drawChart); // Set a callback to run when the Google Visualization API is loaded.
+
+                                    // Callback that creates and populates a data table, instantiates the pie chart, passes in the data and draws it.
+                                    function drawChart() {
+                                        var data = new google.visualization.DataTable(); // Create the data table.
+                                        data.addColumn('string', 'Topping');
+                                        data.addColumn('number', 'Slices');
+                                        data.addRows([
+                                            ['Mushrooms', 3],
+                                            ['Onions', 1],
+                                            ['Olives', 1],
+                                            ['Zucchini', 1],
+                                            ['Pepperoni', 2]
+                                        ]);
+
+                                        // Set chart options
+                                        var options = {
+                                            'title': '',
+                                            'width': '100%',
+                                            'height': '100%'
+                                        };
+
+                                        // Instantiate and draw our chart, passing in some options.
+                                        var chart = new google.visualization.ColumnChart(document.getElementById('historico_entregas'));
+                                        chart.draw(data, options);
+                                    }
+                                </script>
+                                <div id="historico_entregas"></div>
+                            </div>
+                            <div class="graficos__item">
+                                <h4>Variação Slump</h4>
+                                <script type="text/javascript">
+                                    google.charts.load('current', { // Load the Visualization API and the corechart package.
+                                        'packages': ['corechart']
+                                    });
+                                    google.charts.setOnLoadCallback(drawChart); // Set a callback to run when the Google Visualization API is loaded.
+
+                                    // Callback that creates and populates a data table, instantiates the pie chart, passes in the data and draws it.
+                                    function drawChart() {
+                                        var data = new google.visualization.DataTable(); // Create the data table.
+                                        data.addColumn('string', 'Topping');
+                                        data.addColumn('number', 'Slices');
+                                        data.addRows([
+                                            ['Mushrooms', 3],
+                                            ['Onions', 1],
+                                            ['Olives', 1],
+                                            ['Zucchini', 1],
+                                            ['Pepperoni', 2]
+                                        ]);
+
+                                        // Set chart options
+                                        var options = {
+                                            'title': '',
+                                            'width': '100%',
+                                            'height': '100%'
+                                        };
+
+                                        // Instantiate and draw our chart, passing in some options.
+                                        var chart = new google.visualization.AreaChart(document.getElementById('variacao_slump'));
+                                        chart.draw(data, options);
+                                    }
+                                </script>
+                                <div id="variacao_slump"></div>
+                            </div>
+                            <div class="graficos__item">
+                                <h4>Overview Status</h4>
+                                <script type="text/javascript">
+                                    google.charts.load('current', { // Load the Visualization API and the corechart package.
+                                        'packages': ['corechart']
+                                    });
+                                    google.charts.setOnLoadCallback(drawChart); // Set a callback to run when the Google Visualization API is loaded.
+
+                                    // Callback that creates and populates a data table, instantiates the pie chart, passes in the data and draws it.
+                                    function drawChart() {
+                                        var data = new google.visualization.DataTable(); // Create the data table.
+                                        data.addColumn('string', 'Topping');
+                                        data.addColumn('number', 'Slices');
+                                        data.addRows([
+                                            ['Mushrooms', 3],
+                                            ['Onions', 1],
+                                            ['Olives', 1],
+                                            ['Zucchini', 1],
+                                            ['Pepperoni', 2]
+                                        ]);
+
+                                        // Set chart options
+                                        var options = {
+                                            'title': '',
+                                            'legend': 'bottom',
+                                            'width': '100%',
+                                            'height': '100%'
+                                        };
+
+                                        // Instantiate and draw our chart, passing in some options.
+                                        var chart = new google.visualization.PieChart(document.getElementById('overview_status'));
+                                        chart.draw(data, options);
+                                    }
+                                </script>
+                                <div id="overview_status"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard__item">
+                        <header class="dashboard__item-header">
+                            <h3>Entregas Realizadas</h3>
+                            <div class="input-search">
+                                <input type="search" name="filterEntregas" id="filterEntregas" class="inputForm" placeholder="Pesquisar...">
+                                <div class="buttons-filter">
+                                    <button type="button"><i class="fas fa-th"></i></button>
+                                    <button type="button"><i class="fas fa-filter"></i></button>
+                                </div>
+                            </div>
+                        </header>
+                        <div class="dashboard__item-content">
+                            <table class="table entregas__table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Data</th>
+                                        <th>Local</th>
+                                        <th>Total M<sup>3</sup></th>
+                                        <th>Slump mm</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr class="text-red">
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr class="text-red">
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>22/06</td>
+                                        <td>Local</td>
+                                        <td>1645</td>
+                                        <td>1645</td>
+                                        <td>Abaixo</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id="paginator-entregas" class="paginator"></div>
+                        </div>
+                    </div>
+                    <div class="dashboard__item">
+                        <header class="dashboard__item-header">
+                            <h3>Eventos de Manutenção</h3>
+                            <div class="input-search">
+                                <input type="search" name="filterEntregas" id="filterEntregas" class="inputForm" placeholder="Pesquisar...">
+                                <div class="buttons-filter">
+                                    <button type="button"><i class="fas fa-th"></i></button>
+                                    <button type="button"><i class="fas fa-filter"></i></button>
+                                </div>
+                            </div>
+                        </header>
+                        <div class="dashboard__item-content">
+                            <table class="table manutencao__table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Placa</th>
+                                        <th>Última</th>
+                                        <th>Próxima</th>
+                                        <th>Item</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>Placa</td>
+                                        <td>Última</td>
+                                        <td>Próxima</td>
+                                        <td>Item</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Placa</td>
+                                        <td>Última</td>
+                                        <td>Próxima</td>
+                                        <td>Item</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Placa</td>
+                                        <td>Última</td>
+                                        <td>Próxima</td>
+                                        <td>Item</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Placa</td>
+                                        <td>Última</td>
+                                        <td>Próxima</td>
+                                        <td>Item</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Placa</td>
+                                        <td>Última</td>
+                                        <td>Próxima</td>
+                                        <td>Item</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Placa</td>
+                                        <td>Última</td>
+                                        <td>Próxima</td>
+                                        <td>Item</td>
+                                    </tr>
+                                    <tr class="text-red">
+                                        <td></td>
+                                        <td>Placa</td>
+                                        <td>Última</td>
+                                        <td>Próxima</td>
+                                        <td>Item</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Placa</td>
+                                        <td>Última</td>
+                                        <td>Próxima</td>
+                                        <td>Item</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id="paginator-manutencao" class="paginator"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+        <footer></footer>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <script src="./assets/js/jquery/jquery.validate.js"></script>
+    <script src="./assets/js/jquery/jquery.unobtrusive-ajax.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="./assets/fontawesome/js/all.js"></script>
+    <script src="./assets/fontawesome/js/fontawesome.js"></script>
+
+    <script src="./assets/js/toastr.js"></script>
+    <script src="./assets/js/paginator.js"></script>
+    <script src="./assets/js/nprogress.js"></script>
+
+    <script src="./assets/js/functions.js"></script>
+    <script src="./assets/js/app.js" defer></script>
+
+    <script>
+        fnProgressBarLoading();
+    </script>
+</body>
+
+</html>
+
+</html>
+
+</html>
